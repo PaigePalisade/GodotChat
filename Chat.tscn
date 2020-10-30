@@ -1,0 +1,226 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://icons/send_normal.png" type="Texture" id=1]
+[ext_resource path="res://fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://icons/send_pressed.png" type="Texture" id=3]
+[ext_resource path="res://scripts/Chat.gd" type="Script" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 514, 513 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 514, 513 )
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 514, 513 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.0980392, 0.490196, 0.286275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.0588235, 0.333333, 0.188235, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.0980392, 0.490196, 0.286275, 1 )
+
+[sub_resource type="DynamicFont" id=17]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 45
+font_data = ExtResource( 2 )
+
+[node name="Chat" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopBar" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.1
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="Panel" parent="TopBar"]
+anchor_right = 0.2
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="TopBar"]
+anchor_left = 0.2
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Godot Chat"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChatScreen" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomBar" type="Panel" parent="ChatScreen"]
+anchor_top = 0.87
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -6.10352e-05
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageField" type="TextEdit" parent="ChatScreen/BottomBar"]
+anchor_left = 0.1
+anchor_top = 0.15
+anchor_right = 0.75
+anchor_bottom = 0.85
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+wrap_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SendButton" type="Button" parent="ChatScreen/BottomBar"]
+anchor_left = 0.78
+anchor_top = 0.1
+anchor_right = 0.97
+anchor_bottom = 0.9
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ChatScreen"]
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.87
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Messages" type="VBoxContainer" parent="ChatScreen/ScrollContainer"]
+margin_right = 540.0
+margin_bottom = 1.0
+rect_min_size = Vector2( 0, 1 )
+size_flags_horizontal = 3
+
+[node name="MainMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Username" type="LineEdit" parent="MainMenu"]
+anchor_left = 0.2
+anchor_top = 0.45
+anchor_right = 0.8
+anchor_bottom = 0.5
+custom_fonts/font = SubResource( 12 )
+text = "Username"
+
+[node name="Hostname" type="LineEdit" parent="MainMenu"]
+anchor_left = 0.2
+anchor_top = 0.35
+anchor_right = 0.8
+anchor_bottom = 0.4
+custom_fonts/font = SubResource( 12 )
+text = "ws://hostname:8080"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JoinButton" type="Button" parent="MainMenu"]
+anchor_left = 0.35
+anchor_top = 0.55
+anchor_right = 0.65
+anchor_bottom = 0.6
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
+text = "Join"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="error" type="Label" parent="MainMenu"]
+visible = false
+margin_left = 32.048
+margin_top = 167.455
+margin_right = 458.048
+margin_bottom = 223.455
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "There was an error"
+
+[node name="disconnected" type="Label" parent="MainMenu"]
+visible = false
+margin_left = 35.8278
+margin_top = 258.169
+margin_right = 461.828
+margin_bottom = 314.169
+custom_fonts/font = SubResource( 18 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Disconnected"
+[connection signal="pressed" from="ChatScreen/BottomBar/SendButton" to="." method="_on_SendButton_pressed"]
+[connection signal="pressed" from="MainMenu/JoinButton" to="." method="_on_JoinButton_pressed"]

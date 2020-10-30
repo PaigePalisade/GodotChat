@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="Godot Chat"
+run/main_scene="res://Chat.tscn"
+config/icon="res://icon.png"
+config/quit_on_go_back=false
+
+[display]
+
+window/size/width=540
+window/size/height=960
+window/energy_saving/keep_screen_on=false
+window/handheld/orientation="portrait"
+window/ios/hide_home_indicator=false
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
